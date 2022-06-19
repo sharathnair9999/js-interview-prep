@@ -1,4 +1,10 @@
-import { myMap, myforEach, myAsyncforEach, myFilter } from "./polyfills.js";
+import {
+  myMap,
+  myforEach,
+  myAsyncforEach,
+  myFilter,
+  myReduce,
+} from "./polyfills.js";
 //------------------- Default Array Methods Results in Javascript ---------------------------
 
 // A sample array of numbers
@@ -28,17 +34,17 @@ const defaultMapResult = sampleArr.map((item) => item + 1);
 // filter
 const defaultFilterResult = sampleArr.filter((item) => item % 2 !== 0);
 
-console.log(`Default Filter Result : ${defaultFilterResult}`);
+// console.log(`Default Filter Result : ${defaultFilterResult}`);
 
 // reduce
 const defaultReduceResult = sampleArr.reduce((acc, curr) => {
   return curr % 2 === 0 ? (acc += curr) : acc;
-}, 0);
+});
 
-// console.log(`Default Reduce Result : ${defaultReduceResult}`);
+console.log(`Default Reduce Result : ${defaultReduceResult}`);
 
 // forEach
-let actualForEachReturns = [];
+const actualForEachReturns = [];
 details.forEach(({ name, delay }) => {
   const ans = `Hey ${name}! This will return after ${delay / 1000} seconds`;
   actualForEachReturns.push(ans);
@@ -54,25 +60,25 @@ const myMapResult = sampleArr.myMap((item) => item + 1);
 
 // Polyfill result for filter
 const myFilterResult = sampleArr.myFilter((item) => item % 2 !== 0);
-console.log(`My Filter Result ${myFilterResult} `);
+// console.log(`My Filter Result ${myFilterResult} `);
 
 // --------------------------------------------------------------------------------------
 
 // Polyfill result for forEach
 
-let myForEachResults = [];
+const myForEachResults = [];
 details.myforEach(({ name, delay }) => {
   const ans = `Hey ${name}! This will return after ${delay / 1000} seconds`;
   myForEachResults.push(ans);
 });
-console.log(myForEachResults);
+// console.log(myForEachResults);
 
 // async operation on array prototype methods doesnt work as internally they dont support async await
 
 // For example - using the async function written in line number 14 :
 
 // Async forEach polyfill results
-let polyfillForEachReturns = [];
+const polyfillForEachReturns = [];
 (async () => {
   await details.myAsyncforEach(async ({ name, delay }) => {
     const ans = await asyncOperation(name, delay);
@@ -80,3 +86,11 @@ let polyfillForEachReturns = [];
   });
   // console.log(polyfillForEachReturns);
 })();
+
+// Polyfill for reduce
+
+const myReduceResult = sampleArr.myReduce((acc, curr) => {
+  return curr % 2 === 0 ? (acc += curr) : acc;
+});
+
+console.log(`My Reduce Result : ${myReduceResult}`);
