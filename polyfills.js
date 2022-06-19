@@ -20,3 +20,11 @@ const myFilter = (Array.prototype.myFilter = function (cb) {
   }
   return res;
 });
+
+// Polyfill for forEach
+const myforEach = (Array.prototype.myforEach = function (cb) {
+  const myArr = this;
+  for (let index = 0; index < myArr.length; index++) {
+    cb(myArr[index], index, myArr);
+  }
+});
