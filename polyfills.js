@@ -37,4 +37,14 @@ const myAsyncforEach = (Array.prototype.myAsyncforEach = async function (cb) {
   }
 });
 
-export { myMap, myforEach, myAsyncforEach, myFilter };
+// Polyfill for reduce
+const myReduce = (Array.prototype.myReduce = function (cb, initialData) {
+  const myArr = this;
+  let accumulator = initialData ?? myArr[0];
+  for (let i = 0; i < myArr.length; i++) {
+    accumulator = cb(accumulator, myArr[i], i, myArr);
+  }
+  return accumulator;
+});
+
+export { myMap, myforEach, myAsyncforEach, myFilter, myReduce };
