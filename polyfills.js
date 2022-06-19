@@ -28,3 +28,13 @@ const myforEach = (Array.prototype.myforEach = function (cb) {
     cb(myArr[index], index, myArr);
   }
 });
+
+// Polyfill for asynchronous forEach
+const myAsyncforEach = (Array.prototype.myAsyncforEach = async function (cb) {
+  const myArr = this;
+  for (let index = 0; index < myArr.length; index++) {
+    await cb(myArr[index], index, myArr);
+  }
+});
+
+export { myMap, myforEach, myAsyncforEach, myFilter };
