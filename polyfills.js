@@ -8,3 +8,15 @@ const myMap = (Array.prototype.myMap = function (cb) {
   }
   return res;
 });
+
+// Polyfill for filter method
+const myFilter = (Array.prototype.myFilter = function (cb) {
+  const myArr = this;
+  const res = [];
+  for (let index = 0; index < myArr.length; index++) {
+    if (cb(myArr[index], index, myArr)) {
+      res.push(myArr[index]);
+    }
+  }
+  return res;
+});
