@@ -47,4 +47,32 @@ const myReduce = (Array.prototype.myReduce = function (cb, initialData) {
   return accumulator;
 });
 
-export { myMap, myforEach, myAsyncforEach, myFilter, myReduce };
+// Polyfill for call in javascript
+
+const myCall = (Function.prototype.myCall = function (obj, ...args) {
+  obj.fnRef = this;
+  return obj.fnRef(...args);
+});
+
+const myApply = (Function.prototype.myApply = function (obj, args) {
+  obj.fnRef = this;
+  return obj.fnRef(...args);
+});
+
+const myBind = (Function.prototype.myBind = function (obj, ...args) {
+  obj.fnRef = this;
+  return function () {
+    return obj.fnRef(...args);
+  };
+});
+
+export {
+  myMap,
+  myforEach,
+  myAsyncforEach,
+  myFilter,
+  myReduce,
+  myCall,
+  myApply,
+  myBind,
+};

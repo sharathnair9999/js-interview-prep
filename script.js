@@ -1,10 +1,4 @@
-import {
-  myMap,
-  myforEach,
-  myAsyncforEach,
-  myFilter,
-  myReduce,
-} from "./polyfills.js";
+import "./polyfills.js";
 //------------------- Default Array Methods Results in Javascript ---------------------------
 
 // A sample array of numbers
@@ -94,3 +88,42 @@ const myReduceResult = sampleArr.myReduce((acc, curr) => {
 });
 
 console.log(`My Reduce Result : ${myReduceResult}`);
+
+// ====================================================================================================================
+
+// Default function borrowing methods in Javascript
+
+const fbObj = {
+  firstName: "Sharath",
+  lastName: "Nair",
+  company: "Apna Adda",
+  getFullName: function () {
+    return `My Full Name is ${this.firstName} ${this.lastName}`;
+  },
+  getCurrentLocation: function (district, state) {
+    return `${this.firstName} is currently in ${district}, ${state}`;
+  },
+};
+
+const fbObj1 = {
+  firstName: "Tony",
+  lastName: "Stark",
+  company: "Stark Industries",
+  getCompany: function () {
+    return `${this.firstName} works at ${this.company}`;
+  },
+};
+
+console.log(fbObj.getCurrentLocation.call(fbObj1, "Mumbai", "Maharashtra"));
+console.log(fbObj.getCurrentLocation.bind(fbObj1, "Hyderabad", "Telangana")());
+console.log(fbObj.getCurrentLocation.apply(fbObj1, ["Hyderabad", "Telangana"]));
+
+// My Polyfills Results for function borrowing methods
+
+console.log(fbObj.getCurrentLocation.myCall(fbObj1, "Mumbai", "Maharashtra"));
+console.log(
+  fbObj.getCurrentLocation.myBind(fbObj1, "Hyderabad", "Telangana")()
+);
+console.log(
+  fbObj.getCurrentLocation.myApply(fbObj1, ["Hyderabad", "Telangana"])
+);
