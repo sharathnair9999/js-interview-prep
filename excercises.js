@@ -104,3 +104,44 @@ const arr3 = [2, 3, 4, 5];
 // console.log(arr3.sum(2).multiply(3));
 
 // --------------------------------------------------------------------------------------------------------
+
+// Count the numbers present inside this array till the very last nested array.
+const nestedArray = [
+  "a",
+  1,
+  function () {},
+  [2, "b", function () {}, [4, function () {}, "sharath"]],
+  3,
+  "A",
+];
+
+// output : 4
+
+// Function to flatten an array
+const returnNestedElementsIntoArray = (arr, ans = []) => {
+  for (let index = 0; index < arr.length; index++) {
+    const element = arr[index];
+    if (typeof element === "object") {
+      returnNestedElementsIntoArray(element, ans);
+    } else {
+      ans.push(element);
+    }
+  }
+  return ans;
+};
+
+console.log();
+const customFlattenedArray = returnNestedElementsIntoArray(nestedArray);
+const defaultFlatArray = nestedArray.flat(Infinity);
+
+console.log(customFlattenedArray);
+console.log(defaultFlatArray);
+
+const totalNums1 = customFlattenedArray.filter((ele) => !isNaN(ele)).length;
+const totalNums2 = customFlattenedArray.filter((ele) => !isNaN(ele)).length;
+
+console.log(totalNums1);
+console.log(totalNums2);
+
+// ----------------------------------------------------------------------------------------------------
+
