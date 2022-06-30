@@ -59,34 +59,6 @@ const res = arr2.filter((ele, ind) => arr2.lastIndexOf(ele) === ind);
 
 // --------------------------------------------------------------------------------------------------------
 
-// Problem
-
-/* - Input : a21b23c45a34d56
-- Output : a55b23c34d56
-- Explanation : Each 3 characters are key : value pairs of letter and its value, so in the input , ‘a’ is encountered twice its corresponding value is added and given out in the result
-*/
-
-const input = "a21b23c45a34d56";
-
-const getKeysAndValues = (str) => {
-  const res = {};
-  for (let index = 0; index < str.length; index++) {
-    const element = str[index];
-    if (isNaN(element)) {
-      if (res[element]) {
-        res[element] += 1;
-      } else {
-        res[element] = 1;
-      }
-    }
-  }
-  return res;
-};
-
-console.log(getKeysAndValues(input));
-
-// --------------------------------------------------------------------------------------------------------
-
 const arr3 = [2, 3, 4, 5];
 
 // o/p: [12,15,18,21]
@@ -145,3 +117,48 @@ console.log(totalNums2);
 
 // ----------------------------------------------------------------------------------------------------
 
+/* - Input : a21b23c45a34d56
+- Output : a55b23c34d56
+- Explanation : Each 3 characters are key : value pairs of letter and its value, so in the input , ‘a’ is encountered twice its corresponding value is added and given out in the result
+*/
+
+const testStr = "a21b23c45a34d56";
+
+const reverseNum = (num = "") => {
+  if (num === "") return "";
+  return [...num].reverse().join("");
+};
+
+const convertFromMaptoString = (map) => {
+  let res = "";
+  for (let [key, value] of Object.entries(map)) {
+    res += `${key}${value}`;
+  }
+
+  return res;
+};
+
+const test = (str = "") => {
+  if (str === "") return 0;
+  const map = {};
+  let num = "";
+
+  for (let i = str.length - 1; i >= 0; i--) {
+    if (str[i] >= "a" && str[i] <= "z") {
+      let revNum = reverseNum(num);
+      num = "";
+      if (map[str[i]]) {
+        map[str[i]] = map[str[i]] + Number(revNum);
+      } else {
+        map[str[i]] = Number(revNum);
+      }
+    } else {
+      num += str[i];
+    }
+  }
+  return convertFromMaptoString(map);
+};
+
+console.log(test(testStr));
+
+// ----------------------------------------------------------------------------------------------------
