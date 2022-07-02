@@ -162,3 +162,17 @@ const test = (str = "") => {
 console.log(test(testStr));
 
 // ----------------------------------------------------------------------------------------------------
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+
+const c1 = new Person("Sharath", 23);
+const c2 = Person("Sharath Nair", 23);
+
+// console.log(c1);
+// console.log(c2);
+
+// -------------------------------------------------------------------------------------------------------
+
