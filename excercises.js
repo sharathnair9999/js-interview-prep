@@ -188,3 +188,31 @@ console.log(lonelyinteger(sample));
 
 // ------------------------------------------------------------------------------------------------
 
+/*
+  Given input arr = 3,1,5,4 , y = 2
+  make any number of operations by adding a number x to all elements in array so that we can get max number of y's in it
+*/
+
+const maxfreqArr = [1, 1];
+const y = -10;
+
+function solve(arr) {
+  const map1 = new Map();
+  for (const element of arr) {
+    if (map1.has(element)) {
+      map1.set(element, map1.get(element) + 1);
+    } else {
+      map1.set(element, 1);
+    }
+  }
+  console.log(map1);
+  let max = 0;
+  for (const [key, value] of map1) {
+    if (value > max) {
+      max = value;
+    }
+  }
+  return max;
+}
+
+console.log(solve(maxfreqArr, y));
