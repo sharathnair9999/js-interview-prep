@@ -176,3 +176,15 @@ const c2 = Person("Sharath Nair", 23);
 
 // -------------------------------------------------------------------------------------------------------
 
+// Return the elements that are not repeated from the array
+
+const sample = [1, 1, 2, 2, 3, 3, 4, 4, 5, 6];
+function lonelyinteger(arr) {
+  // Write your code here
+  return arr.filter((ele, ind) => arr.indexOf(ele) === arr.lastIndexOf(ele));
+}
+
+console.log(lonelyinteger(sample));
+
+// ------------------------------------------------------------------------------------------------
+
