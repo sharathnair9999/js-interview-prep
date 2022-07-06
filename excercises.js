@@ -90,24 +90,24 @@ const nestedArray = [
 // output : 4
 
 // Function to flatten an array
-const returnNestedElementsIntoArray = (arr, ans = []) => {
+const myFlat = (Array.prototype.myFlat = function (arr, ans = []) {
   for (let index = 0; index < arr.length; index++) {
     const element = arr[index];
-    if (typeof element === "object") {
-      returnNestedElementsIntoArray(element, ans);
+    if (Array.isArray(element)) {
+      myFlat(element, ans);
     } else {
       ans.push(element);
     }
   }
   return ans;
-};
+});
 
 console.log();
-const customFlattenedArray = returnNestedElementsIntoArray(nestedArray);
+const customFlattenedArray = nestedArray.myFlat(nestedArray);
 const defaultFlatArray = nestedArray.flat(Infinity);
 
-console.log(customFlattenedArray);
 console.log(defaultFlatArray);
+console.log(customFlattenedArray);
 
 const totalNums1 = customFlattenedArray.filter((ele) => !isNaN(ele)).length;
 const totalNums2 = customFlattenedArray.filter((ele) => !isNaN(ele)).length;
@@ -205,7 +205,6 @@ function solve(arr) {
       map1.set(element, 1);
     }
   }
-  console.log(map1);
   let max = 0;
   for (const [key, value] of map1) {
     if (value > max) {
