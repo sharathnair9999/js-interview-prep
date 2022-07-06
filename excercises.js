@@ -244,3 +244,24 @@ console.log(
     [3, 4],
   ])
 );
+// ------------------------------------------------------------------------------------------------
+function plusMinus(arr) {
+  // Write your code here
+  const ratiosArray = new Array(3).fill(0);
+  for (let i = 0; i < arr.length; i++) {
+    const element = arr[i];
+    if (element > 0) {
+      ratiosArray[0]++;
+    } else if (element < 0) {
+      ratiosArray[1]++;
+    } else {
+      ratiosArray[2]++;
+    }
+  }
+  ratiosArray.map((value) => console.log((value / arr.length).toFixed(6)));
+}
+
+plusMinus([1, 1, 0, -1, -1]);
+
+// ------------------------------------------------------------------------------------------------
+
