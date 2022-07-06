@@ -216,3 +216,31 @@ function solve(arr) {
 }
 
 console.log(solve(maxfreqArr, y));
+
+// ------------------------------------------------------------------------------------------------
+function flippingMatrix(matrix) {
+  // Write your code here
+  let sum = 0;
+  let len = matrix.length / 2;
+  for (let i = 0; i < len; i++) {
+    for (let j = 0; j < len; j++) {
+      sum =
+        sum +
+        Math.max(
+          Math.max(matrix[i][j], matrix[i][2 * len - j - 1]),
+          Math.max(
+            matrix[2 * len - i - 1][j],
+            matrix[2 * len - i - 1][2 * len - j - 1]
+          )
+        );
+    }
+  }
+  return sum;
+}
+
+console.log(
+  flippingMatrix([
+    [1, 2],
+    [3, 4],
+  ])
+);
