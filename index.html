@@ -10,7 +10,10 @@
     <script src="listener.js" defer></script>
     <!-- <script src="closures.js" defer></script> -->
     <script src="debounce.js" defer></script>
+    <script src="js-events.js" defer></script>
+    <script src="memoization.js" defer></script>
     <!-- <script src="outputBased.js" defer></script> -->
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
   </head>
   <body>
@@ -27,5 +30,15 @@
     <input type="text" id="listener_input" /><button id="push_button">
       Push
     </button>
+    <hr />
+    <h1>Event Bubbling and capturing</h1>
+    <p>Check in console by clicking on each box</p>
+    <div id="parent">
+      parent
+      <div id="child">
+        child
+        <div id="child2">child2</div>
+      </div>
+    </div>
   </body>
 </html>
