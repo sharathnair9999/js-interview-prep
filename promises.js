@@ -29,3 +29,33 @@ const primePromise = (num) =>
 Promise.race([divisbleBy2Promise(2), primePromise(5)]).then((values) =>
   console.log(values)
 );
+
+Promise.all([divisbleBy2Promise(2), primePromise(5)]).then((res) =>
+  console.log(res)
+);
+
+const prom1 = new Promise((res) => {
+  setTimeout(() => {
+    res("I resolved");
+  }, 1000);
+});
+const prom2 = new Promise((res) => {
+  setTimeout(() => {
+    res("I resolved 2");
+  }, 1500);
+});
+
+Promise.all([prom1, prom2]).then((eachProm) => console.log(eachProm));
+
+Promise.prototype.myAll = async function (promises) {
+  let allPromises = [...promises];
+  let res = [];
+  for await (const promise of allPromises) {
+    promise.then((r) => res.push(r));
+  }
+  return Promise.resolve(res);
+};
+
+Promise.myAll([prom1, prom2]).then((eachProm) => console.log(eachProm));
+
+//---------------------
