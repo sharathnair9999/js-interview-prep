@@ -265,3 +265,18 @@ plusMinus([1, 1, 0, -1, -1]);
 
 // ------------------------------------------------------------------------------------------------
 
+// Compose function
+
+const compose = (first, second) => (x) => second(first(x));
+
+const obj = {
+  name: "sharath",
+};
+
+const getUserName = (obj) => obj.name;
+
+const capitalize = (name) => name[0].toUpperCase() + name.slice(1);
+
+const getCapitalizedUsername = compose(getUserName, capitalize);
+
+console.log(getCapitalizedUsername(obj));
