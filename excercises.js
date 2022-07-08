@@ -279,3 +279,16 @@ const capitalize = (name) => name[0].toUpperCase() + name.slice(1);
 const getCapitalizedUsername = compose(getUserName, capitalize);
 
 console.log(getCapitalizedUsername(obj));
+
+function add(a) {
+  return function (b) {
+    if (b) {
+      return add(a + b);
+    }
+    return a;
+  };
+}
+
+const ans = add(1)(2)(3)();
+
+console.log(ans);
