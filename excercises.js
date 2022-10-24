@@ -292,3 +292,47 @@ function add(a) {
 const ans = add(1)(2)(3)();
 
 console.log(ans);
+
+// =========================================================================================
+
+const obj1 = {
+  firstname: "John",
+  lastname: "Doe",
+  age: 24,
+  isMarried: false,
+  address: {
+    city: "SFO",
+    state: "CA",
+    zip: 111111,
+    details: {
+      block: "23rd Lexington Avenue",
+      street: "El Camino Street",
+    },
+  },
+};
+
+const getValue = (obj, path) => {
+  const pathKeys = path.split(".");
+  let val = null;
+  if (Object.keys(obj) && Object.keys(obj).includes(pathKeys[0])) {
+    if (pathKeys.length > 0) {
+      return true;
+    } else {
+      val = obj[pathKeys[0]];
+      let nextPath = pathKeys.slice(1).join(".");
+      return getValue(val, nextPath);
+    }
+  } else {
+    return false;
+  }
+};
+
+/**
+ * Base Case : "address.details" is not a valid path in the object // return false
+ * Success case : "address.details.block" is the last element and reachable of the object and has a valid value //return true
+ * else return next recursive solution
+ *
+ */
+
+console.log(getValue(obj1, "address.city"));
+console.log(getValue(obj1, "address.details.sharath"));

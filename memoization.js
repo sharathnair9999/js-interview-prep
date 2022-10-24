@@ -1,4 +1,4 @@
-const add = (num) => num + 1000;
+// const add = (num) => num + 1000;
 
 const memoedData = (fn) => {
   const cache = {};
@@ -16,7 +16,7 @@ const memoedData = (fn) => {
 };
 
 const userFound = (user) => {
-  const userList = ["sharath", "rahul"];
+  const userList = ["sharath", "rohit"];
   for (let i = 0; i < 100000000; i++) {}
   return userList.some((u) => u === user);
 };

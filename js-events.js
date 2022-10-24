@@ -12,6 +12,6 @@ const handleChild2 = () => {
   console.log("clicked Child2");
 };
 
-parent.addEventListener("click", handleParent, false);
-child.addEventListener("click", handleChild, false);
-child2.addEventListener("click", handleChild2, false);
+parent.addEventListener("click", handleParent, true);
+child.addEventListener("click", handleChild, true);
+child2.addEventListener("click", handleChild2, true);
